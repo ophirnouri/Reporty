@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>דו"ח יציאה לפעילות</title>
+<style>
+:root{--bg:#eceee6;--surface:#fbfbf7;--ink:#1f2619;--muted:#5d6652;--line:#c9cdbd;--accent:#4a5d34;--accent-ink:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171b13;--surface:#20261b;--ink:#e8ebdf;--muted:#9aa38c;--line:#363e2d;--accent:#9db878;--accent-ink:#141810}}
+:root[data-theme="dark"]{--bg:#171b13;--surface:#20261b;--ink:#e8ebdf;--muted:#9aa38c;--line:#363e2d;--accent:#9db878;--accent-ink:#141810}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Heebo","Assistant",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.5}
+main{max-width:640px;margin:0 auto;padding:20px 16px 120px}
+h1{font-size:1.5rem;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 20px;font-size:.95rem}
+label{display:block;font-weight:600;margin:18px 0 6px}
+input[type=text],input[type=date],input[type=datetime-local],textarea,select{width:100%;font:inherit;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+textarea{min-height:92px;resize:vertical}
+::placeholder{color:var(--muted);opacity:.65}
+input:focus,textarea:focus,select:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.checks label{font-weight:400;margin:0;display:flex;gap:8px;align-items:center}
+.checks input{accent-color:var(--accent);width:18px;height:18px}
+.bar{position:fixed;inset-inline:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}
+.bar div{max-width:640px;margin:0 auto;display:flex;gap:10px}
+button{font:inherit;font-weight:700;border-radius:6px;padding:12px 16px;border:1px solid var(--accent);cursor:pointer}
+.primary{flex:1;background:var(--accent);color:var(--accent-ink)}
+.ghost{background:transparent;color:var(--accent)}
+pre{white-space:pre-wrap;word-break:break-word;font:inherit;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px;margin:0}
+h2{font-size:1.1rem;margin:28px 0 8px}
+.grp{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:4px 12px 8px;margin-bottom:10px}
+.grp h3{font-size:1rem;margin:10px 0 4px}
+.row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+.step{display:flex;align-items:center;gap:6px}
+.step button{width:40px;height:40px;padding:0;font-size:1.3rem;line-height:1;background:transparent;color:var(--accent)}
+.step input{width:56px;text-align:center;padding:8px 4px;font-weight:700}
+.row.on span{font-weight:700}
+.soldier{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:10px}
+.soldier h3{font-size:.95rem;margin:0 0 8px;display:flex;justify-content:space-between;align-items:center}
+.soldier .fixed{color:var(--accent);font-weight:700}
+.soldier input[type=text]{margin-bottom:8px}
+.soldier .checks{border:0;padding:0;background:transparent}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sl{font-weight:400!important;margin:0 0 4px!important;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<h1>דו"ח יציאה לפעילות 🦅</h1>
+<p class="sub">ממלאים, מעתיקים, ושולחים בוואטסאפ.</p>
+
+<label for="op">שם המבצע</label>
+<input type="text" id="op" placeholder="לדוגמה: מרובע בריבוע">
+
+<label for="day">יום</label>
+<select id="day"><option>ראשון</option><option>שני</option><option>שלישי</option><option>רביעי</option><option>חמישי</option><option>שישי</option><option>שבת</option></select>
+<div class="two" style="margin-top:8px">
+<div><label class="sl" for="df">מתאריך (לא חובה)</label><input type="date" id="df"></div>
+<div><label class="sl" for="dt">עד תאריך (לא חובה)</label><input type="date" id="dt"></div>
+</div>
+
+<label>שעות פעילות</label>
+<div class="two">
+<div><label class="sl" for="act_s">התחלה</label><input type="datetime-local" id="act_s"></div>
+<div><label class="sl" for="act_e">סיום</label><input type="datetime-local" id="act_e"></div>
+</div>
+
+<label for="team">1. צוות</label>
+<input type="text" id="team" placeholder="לדוגמה: RAMBO 10">
+
+<label for="loc">2. מיקום</label>
+<input type="text" id="loc" placeholder="לדוגמה: מוצב 131">
+
+<label for="task">משימה</label>
+<input type="text" id="task" placeholder="לדוגמה: אבטחת כוח בריגדה">
+
+<label for="extra">סד"כ</label>
+<input type="text" id="extra" placeholder="לדוגמה: 4+2">
+
+<label>3. סד"כ: פירוט שמי מלא ותפקיד בפעילות</label>
+<div id="ppl"></div>
+
+<label>4. עוצמה + כמות</label>
+<div id="wpn" style="margin-top:12px"></div>
+
+
+<label>5. מספרי שדלן (לסמן את הערכות)</label>
+<div class="checks" id="shd"><label><input type="checkbox" value="8514"> ערכה 8514</label><label><input type="checkbox" value="5854"> ערכה 5854</label><label><input type="checkbox" value="2120"> ערכה 2120</label><label><input type="checkbox" value="8310"> ערכה 8310</label><label><input type="checkbox" value="8495"> ערכה 8495</label><label><input type="checkbox" value="8496"> ערכה 8496</label><label><input type="checkbox" value="8515"> ערכה 8515</label></div>
+
+<label for="sign">6. חתימה על רימונים/פצמרים מול</label>
+<input type="text" id="sign" placeholder="לדוגמה: שם הגורם החותם">
+
+<label for="cred">7. זיכוי על רימונים/פצמרים מול</label>
+<input type="text" id="cred" placeholder="לדוגמה: שם הגורם המזכה">
+
+<label for="mov">8. שינוע</label>
+<select id="mov"><option>סוואנה</option><option>שיירה עצמאית</option><option>שיירה ע"ב הגדוד</option></select>
+
+<label for="mis">9. משימה גדודית / חטיבתית</label>
+<select id="mis"><option>גדודית</option><option>חטיבתית</option><option>אוגדתית</option></select>
+
+<label>10. בוצע חבירה ל?</label>
+<div class="checks" id="links"></div>
+
+<label for="slp">11. שינה בשטח</label>
+<select id="slp"><option>לא</option><option>כן</option></select>
+
+<h2>תצוגה מקדימה</h2>
+<pre id="out"></pre>
+</main>
+
+<div class="bar"><div>
+<button class="primary" id="copy">העתקה לוואטסאפ</button>
+<button class="ghost" id="wa">שליחה</button>
+</div></div>
+
+<script>
+var LINKS=["אגם חטיבה","אגם גדוד","מ״פ גזרתי","מפ תצפיות","מ״מ תצפיות","חמ״ל תצפיות","מודיעין חטיבה","מכלול איסוף"];
+var box=document.getElementById("links");
+LINKS.forEach(function(t,i){
+  var l=document.createElement("label");
+  l.innerHTML='<input type="checkbox" checked data-i="'+i+'"> <span></span>';
+  l.querySelector("span").textContent=t;
+  box.appendChild(l);
+});
+var ROLES=["אלפא","איבו","כלי תוקף","קלע","מטול","נגב","חובש","צלף"];
+var FIXED={0:"מפקצ",1:"סמל"};
+var sbox=document.getElementById("ppl");
+for(var si=0;si<9;si++){(function(i){
+  var c=document.createElement("div");c.className="soldier";
+  var h=document.createElement("h3");
+  var t=document.createElement("span");t.textContent="חייל "+(i+1);h.appendChild(t);
+  if(FIXED[i]){var f=document.createElement("span");f.className="fixed";f.textContent=FIXED[i];h.appendChild(f)}
+  c.appendChild(h);
+  var nm=document.createElement("input");nm.type="text";nm.className="sname";nm.placeholder=i==0?"לדוגמה: אביב אפרת":"שם מלא";
+  nm.setAttribute("aria-label","שם חייל "+(i+1));
+  c.appendChild(nm);
+  if(!FIXED[i]){
+    var list=(i==2?["מכ"]:[]).concat(ROLES);
+    var box2=document.createElement("div");box2.className="checks";
+    list.forEach(function(r){
+      var l=document.createElement("label");
+      var cb=document.createElement("input");cb.type="checkbox";cb.value=r;
+      var sp=document.createElement("span");sp.textContent=r;
+      l.appendChild(cb);l.appendChild(sp);box2.appendChild(l);
+    });
+    c.appendChild(box2);
+  }
+  c.dataset.i=i;
+  sbox.appendChild(c);
+})(si)}
+function soldiersText(){
+  var out=[],n=0;
+  [].slice.call(sbox.querySelectorAll(".soldier")).forEach(function(c){
+    var name=c.querySelector(".sname").value.trim();
+    if(!name)return;
+    n++;
+    var i=+c.dataset.i;
+    var roles=FIXED[i]?[FIXED[i]]:[].slice.call(c.querySelectorAll("input:checked")).map(function(x){return x.value});
+    out.push(n+". "+name+(roles.length?" - "+roles.join(" + "):""));
+  });
+  return out.join("\n");
+}
+function sadak(){var ex=v("extra");return ex?'סד"כ: '+ex+"\n\n":""}
+var GROUPS=[
+ ["אמל״ח",["רימונים","פצמרים","רשק מעוז","רשק עטלף"]],
+ ["נמ״ח",["קלע","נגב","מטול"]],
+ ["רחפנים",["איבו","אלפא","מטריס 30","מטריס 350"]],
+ ["תוקפים",["בומרנג","יונתן","עטלף","מעוז"]]
+];
+var wbox=document.getElementById("wpn");
+GROUPS.forEach(function(g,gi){
+  var d=document.createElement("div");d.className="grp";
+  var h=document.createElement("h3");h.textContent=g[0];d.appendChild(h);
+  g[1].forEach(function(name,ii){
+    var r=document.createElement("div");r.className="row";
+    var sp=document.createElement("span");sp.textContent=name;
+    var st=document.createElement("div");st.className="step";
+    var m=document.createElement("button");m.type="button";m.textContent="−";m.setAttribute("aria-label","הפחת "+name);
+    var inp=document.createElement("input");inp.type="number";inp.inputMode="numeric";inp.min="0";inp.value="0";inp.dataset.g=gi;inp.dataset.i=ii;inp.setAttribute("aria-label",name);
+    var p=document.createElement("button");p.type="button";p.textContent="+";p.setAttribute("aria-label","הוסף "+name);
+    function mark(){r.classList.toggle("on",(parseInt(inp.value,10)||0)>0)}
+    m.onclick=function(){inp.value=Math.max(0,(parseInt(inp.value,10)||0)-1);mark();render()};
+    p.onclick=function(){inp.value=(parseInt(inp.value,10)||0)+1;mark();render()};
+    inp.addEventListener("input",mark);
+    st.appendChild(m);st.appendChild(inp);st.appendChild(p);
+    r.appendChild(sp);r.appendChild(st);d.appendChild(r);
+  });
+  wbox.appendChild(d);
+});
+function shdText(){return [].slice.call(document.querySelectorAll("#shd input:checked")).map(function(c){return c.value}).join("\n")}
+function weaponsText(){
+  var parts=[];
+  GROUPS.forEach(function(g,gi){
+    var lines=[];
+    g[1].forEach(function(name,ii){
+      var n=parseInt(wbox.querySelector('input[data-g="'+gi+'"][data-i="'+ii+'"]').value,10)||0;
+      if(n>0)lines.push(n+" "+name);
+    });
+    if(lines.length)parts.push("*"+g[0]+":*\n"+lines.join("\n"));
+  });
+  return parts.join("\n\n");
+}
+function v(id){return document.getElementById(id).value.trim()}
+var DAYS=["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"];
+document.getElementById("day").selectedIndex=new Date().getDay();
+function fmt(x){if(!x)return "";var p=x.split("T"),d=p[0].split("-");return d[2]+"/"+d[1]+" "+p[1]}
+function ds(x){if(!x)return "";var p=x.split("-");return "יום "+DAYS[new Date(+p[0],+p[1]-1,+p[2]).getDay()]+" "+p[2]+"/"+p[1]}
+function dayLine(){var a=ds(v("df"))||"יום "+v("day"),b=ds(v("dt"));return "*"+a+(b?" - "+b:"")+"*"}
+function hoursText(){return [v("act_s"),v("act_e")].map(fmt).filter(Boolean).join(" - ")}
+function sec(t,b){return t+"\n"+(b||"-")}
+function build(){
+  var links=[].slice.call(box.querySelectorAll("input:checked")).map(function(c){return LINKS[c.dataset.i]}).join("\n");
+  var loc=v("loc"),task=v("task"),sd=v("extra");
+  var place=[loc?"מיקום: "+loc:"",task?"משימה: "+task:""].filter(Boolean).join("\n");
+  var blocks=[
+    '*פורמט דו"ח יציאה לפעילות:🦅*\n*שם המבצע: '+v("op")+'*\n'+dayLine()+'\n*שעות פעילות:* '+(hoursText()||"?"),
+    '*1. צוות:* '+v("team"),
+    sec('*2. מיקום+משימה:*',place),
+    (sd?'*סד"כ: '+sd+'*\n\n':'')+sec('*3. סד"כ: פירוט שמי מלא ותפקיד בפעילות:*',soldiersText()),
+    sec('*4. עוצמה וכמות: אמל"ח, נמ"ח, רחפנים ותוקפים*',weaponsText()),
+    sec('*5. מספרי שדלן:*',shdText()),
+    sec('*6. חתימה על רימונים/פצמרים מול-*',v("sign")||"?"),
+    sec('*7. זיכוי על רימונים/פצמרים מול-*',v("cred")||"?"),
+    sec('*8. שינוע:*',v("mov")),
+    sec('*9. משימה גדודית/חטיבתית/אוגדתית-*',v("mis")),
+    sec('*10. בוצע חבירה ל:*',links),
+    '*11. שינה בשטח-'+v("slp")+'*'
+  ];
+  return blocks.join("\n\n");
+}
+
+function render(){document.getElementById("out").textContent=build()}
+document.addEventListener("input",render);
+document.addEventListener("change",render);
+render();
+document.getElementById("copy").onclick=function(){
+  var b=this,t=build();
+  function ok(){b.textContent="הועתק ✓";setTimeout(function(){b.textContent="העתקה לוואטסאפ"},1600)}
+  try{navigator.clipboard.writeText(t).then(ok,fallback)}catch(e){fallback()}
+  function fallback(){
+    var r=document.createRange();r.selectNodeContents(document.getElementById("out"));
+    var s=getSelection();s.removeAllRanges();s.addRange(r);
+    try{document.execCommand("copy");ok()}catch(e){}
+  }
+};
+document.getElementById("wa").onclick=function(){
+  window.open("https://wa.me/?text="+encodeURIComponent(build()),"_blank");
+};
+</script>
+</body>
+</html>
